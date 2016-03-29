@@ -1,0 +1,15 @@
+machine:
+    services:
+        - docker
+
+dependencies:
+    # Note, we used to use the naive caching of docker images, but found that
+    # it was quicker just to pull each time. #rollondockercaching
+  override:
+      #- docker pull ocefpaf/conda-recipes:latest_x64
+      # Let's give this one a try. https://hub.docker.com/r/continuumio/centos5_gcc5_base/
+      - docker pull continuumio/centos5_gcc5_base
+
+test:
+    override:
+        - ./scripts/run_docker_build.sh
