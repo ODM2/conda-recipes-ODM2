@@ -1,0 +1,42 @@
+package:
+    name: odm2pythonapi
+    version: 0.2.0
+
+source:
+    git_url: https://github.com/ODM2/ODM2PythonAPI.git
+    git_tag: 2e85ebada2af26386b49374e61b2d448d2d8cd6e
+
+build:
+    number: 0
+    skip: True  # [py3k]
+    script: python setup.py install --single-version-externally-managed --record record.txt
+
+requirements:
+    build:
+        - python
+        - setuptools
+    run:
+        - python
+        - pyodbc
+        - pymysql
+        - sqlalchemy
+        - geoalchemy 0.7.3
+        - shapely
+        - dateutils
+        - pandas
+        - psycopg2
+        - six
+
+test:
+    imports:
+        - odm2api
+
+about:
+    home: https://github.com/ODM2/ODM2PythonAPI
+    license: Open GPL
+    summary: A Python-based application programmer's interface for the Observations Data Model 2 (ODM2)
+
+extra:
+    recipe-maintainers:
+        - ocefpaf
+        - emiliom

@@ -1,0 +1,35 @@
+{% set version = "3.3.5" %}
+
+package:
+    name: iphreeqc
+    version: {{ version }}
+
+source:
+    fn: iphreeqc-{{ version }}-10806.tar.gz
+    url: ftp://brrftp.cr.usgs.gov/pub/charlton/iphreeqc/iphreeqc-{{ version }}-10806.tar.gz
+    md5: b1da0c69216ad49765d925a7737b940b
+
+build:
+    number: 0
+    skip: True  # [win]
+
+requirements:
+    build:
+        - gcc
+    run:
+        - libgcc
+        - libgfortran
+
+test:
+    commands:
+        - exit $(test -f ${PREFIX}/lib/libiphreeqc.so)  # [linux]
+
+about:
+    home: http://www.phreeqpy.com/
+    license: GPL-2.0
+    summary: A Computer Program for Speciation, Batch-Reaction, One-Dimensional Transport, and Inverse Geochemical Calculations
+
+extra:
+    recipe-maintainers:
+        - ocefpaf
+        - emiliom
