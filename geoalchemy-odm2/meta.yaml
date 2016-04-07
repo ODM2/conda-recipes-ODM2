@@ -1,7 +1,7 @@
 {% set version = "0.7.3" %}
 
 package:
-    name: geoalchemy
+    name: geoalchemy-odm2
     version: {{ version }}
 
 source:
