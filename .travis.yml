@@ -15,15 +15,18 @@ before_install:
 install:
     # This numpy variable is not used, but conda-build complains if we haven't set it already.
     - export CONDA_NPY=19
-    - wget https://raw.githubusercontent.com/pelson/Obvious-CI/master/bootstrap-obvious-ci-and-miniconda.py
+    - curl -O https://raw.githubusercontent.com/pelson/Obvious-CI/master/bootstrap-obvious-ci-and-miniconda.py
     - python bootstrap-obvious-ci-and-miniconda.py ~/miniconda x64 2 --without-obvci && source ~/miniconda/bin/activate root
     - conda config --set show_channel_urls True
     - conda install obvious-ci --yes -c conda-forge
 
-    - conda config --add channels ODM2
+    - conda config --add channels odm2
+
+    # Expand external recipe sources.
     - python scripts/expand_source.py
+
     - obvci_install_conda_build_tools.py
     - conda install --yes conda-build=1.18.2
 
 script:
-    - obvci_conda_build_dir ./ ODM2 --channel main --build-condition "numpy >=1.9" "python >=2.7,<3|>=3.4"
+    - obvci_conda_build_dir ./ odm2 --channel main --build-condition "numpy >=1.9" "python >=2.7,<3|>=3.4"
