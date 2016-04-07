@@ -2,7 +2,7 @@
 
 
 REPO_ROOT=$(cd "$(dirname "$0")/.."; pwd;)
-UPLOAD_OWNER="ODM2"
+UPLOAD_OWNER="odm2"
 IMAGE_NAME="ocefpaf/conda-recipes:latest_x64"
 
 config=$(cat <<CONDARC
@@ -34,7 +34,6 @@ echo "$config" > ~/.condarc
 conda install --yes obvious-ci --channel conda-forge
 
 # A lock sometimes occurs with incomplete builds.
-# The lock file is stored in build_artefacts.
 conda clean --lock
 
 python /conda-recipes/scripts/expand_source.py

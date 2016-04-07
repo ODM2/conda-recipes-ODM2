@@ -1,0 +1,3 @@
+gh-repo: conda-forge/msinttypes-feedstock
+git-tag: master
+contents: recipe/*

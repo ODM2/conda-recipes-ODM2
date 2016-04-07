@@ -64,14 +64,19 @@ install:
     - cmd: set PYTHONUNBUFFERED=1
 
     - cmd: conda config --set show_channel_urls yes
-    - cmd: conda config --add channels ODM2
+    - cmd: conda config --add channels odm2
     - cmd: conda install --yes --quiet obvious-ci --channel conda-forge
     - cmd: obvci_install_conda_build_tools.py
     - cmd: conda install --yes conda-build=1.18.2
+
+    # Expand external recipes sources.
+    - cmd: conda install --yes --quiet conda-execute --channel conda-forge
+    - cmd: conda execute -v scripts/expand_source.py
+
     - cmd: conda info
 
 # Skip .NET project specific build phase.
 build: off
 
 test_script:
-    - '%CMD_IN_ENV% obvci_conda_build_dir .\ ODM2 --channel main  --build-condition "numpy >=1.9" "%PY_CONDITION%"'
+    - '%CMD_IN_ENV% obvci_conda_build_dir .\ odm2 --channel main  --build-condition "numpy >=1.9" "%PY_CONDITION%"'
