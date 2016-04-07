@@ -1,7 +1,7 @@
 {% set version = "0.1.0" %}
 
 package:
-    name: odm2pythonapi
+    name: odm2api
     version: {{ version }}.b0
 
 source:
