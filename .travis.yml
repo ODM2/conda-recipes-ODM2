@@ -7,13 +7,13 @@ sudo: false
 
 env:
     global:
-        secure: "TODO"
+        secure: "LGRXO6tBFx4CXlOcG0kpkZZrI6RaXQRJvyJKbk9tn8bcIYdUbhCLM0+1TgvsUZxZ8w0IK5oY4HqsIQujt3RXNfZ+RDEfSQ3Q0LQ1KKtxw3Cfoc1xiykaU5+U6gtE68IbJWvH2Uyl/yzQ3Q5bwDYO+Fs5jBtoLrDSth6i9aPnYXfV1JMih58gGydfUX49xqKdSHagnN/3zT+wE7wXoi2z1V7MffFQd1CxN4pijyn/BoebvlS4pTYV7qoq1RARVOkX082o6Rp1+yorc2yfTJgLITZPsp1rca0wdG3zKZNwnRT3Mnx9S4ICSw124isL1xdcpXx2tZxIMjmod3YByMJppDsrf5NupE6jhE9IGMJFF2k4xIg/4q5yZ9mU8ur/iY4qClXtkEfLKj4V8ECQtx83vhP8Vy4FMIP7DCKrjLA51+QEaF1b0SivmmcGqMwiUqZqQPDhYtlnxdd3ycWpk/s/7KjTTOB+Tlv15Fpke2WtlaTM9c4GfnV1fJiIDg8+1o8pzQwonfyKqN+klAbWJCPtTgKf5XM66qOuv8JBJJlveVy3ToouNawSUN+aatMQq01KKQIURR3e8AgM2UT8O84M5EexmcamqgsHI00ovfHxrH9i+77utxeZwtJ5XJ5kxuweqf/rYDBCRYyXP60FUBEj4eQfMq7hEwOBvqVjnoSIAOE="
 
 before_install:
-    - brew update
+    - brew remove --force $(brew list)
 
 install:
-    # Set the numpy variable. This isn't used, but conda-build complains if we haven't set it already.
+    # This numpy variable is not used, but conda-build complains if we haven't set it already.
     - export CONDA_NPY=19
     - wget https://raw.githubusercontent.com/pelson/Obvious-CI/master/bootstrap-obvious-ci-and-miniconda.py
     - python bootstrap-obvious-ci-and-miniconda.py ~/miniconda x64 2 --without-obvci && source ~/miniconda/bin/activate root

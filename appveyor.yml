@@ -12,7 +12,7 @@ environment:
 
   BINSTAR_TOKEN:
     # Generated with "binstar auth --create --name <username> -o <channel>" and encrypted on ci.appveyor.com/tools/encrypt.
-    secure: TODO
+    secure: DlMt5gi5iLkH2zmCyOu8k1iCk8LKBh4q6Fm/os54uHtfJFTtRBrDQrHu59l4GfuH
 
   matrix:
     # Note: Because we have to separate the py2 and py3 components due to compiler version, we have a race condition for non-python packages.
@@ -37,17 +37,12 @@ environment:
       PY_CONDITION: "python >=3.5"
 
 
-# We always use a 64-bit machine, but can build x86 distributions
-# with the TARGET_ARCH variable.
+# We always use a 64-bit machine, but can build x86 distributions with the TARGET_ARCH variable.
 platform:
     - x64
 
 install:
-    # If there is a newer build queued for the same PR, cancel this one.
-    # The AppVeyor 'rollout builds' option is supposed to serve the same
-    # purpose but it is problematic because it tends to cancel builds pushed
-    # directly to master instead of just PR builds (or the converse).
-    # credits: JuliaLang developers.
+    # If there is a newer build queued for the same PR cancel the previous one.
     - ps: if ($env:APPVEYOR_PULL_REQUEST_NUMBER -and $env:APPVEYOR_BUILD_NUMBER -ne ((Invoke-RestMethod `
          https://ci.appveyor.com/api/projects/$env:APPVEYOR_ACCOUNT_NAME/$env:APPVEYOR_PROJECT_SLUG/history?recordsNumber=50).builds | `
          Where-Object pullRequestId -eq $env:APPVEYOR_PULL_REQUEST_NUMBER)[0].buildNumber) { `
@@ -73,11 +68,6 @@ install:
     - cmd: conda install --yes --quiet obvious-ci --channel conda-forge
     - cmd: obvci_install_conda_build_tools.py
     - cmd: conda install --yes conda-build=1.18.2
-
-    # Expand external recipes sources.
-    - cmd: conda install conda-execute --yes
-    - cmd: conda execute -v scripts/expand_source.py
-
     - cmd: conda info
 
 # Skip .NET project specific build phase.
