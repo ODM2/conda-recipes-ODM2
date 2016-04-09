@@ -2,11 +2,11 @@
 
 package:
     name: odm2api
-    version: {{ version }}.b0
+    version: {{ version }}.a0
 
 source:
     git_url: https://github.com/ODM2/ODM2PythonAPI.git
-    git_tag: {{ version }}_beta
+    git_tag: v{{ version }}-alpha
 
 build:
     number: 0
