@@ -12,7 +12,7 @@ environment:
 
   BINSTAR_TOKEN:
     # Generated with "binstar auth --create --name <username> -o <channel>" and encrypted on ci.appveyor.com/tools/encrypt.
-    secure: DlMt5gi5iLkH2zmCyOu8k1iCk8LKBh4q6Fm/os54uHtfJFTtRBrDQrHu59l4GfuH
+    secure: MRDxJnJIsrkbzfGl8uPFGZF9heiLXjYref0Dc6Cou6KfzSwMbNfckvvQyi++M8JL
 
   matrix:
     # Note: Because we have to separate the py2 and py3 components due to compiler version, we have a race condition for non-python packages.
