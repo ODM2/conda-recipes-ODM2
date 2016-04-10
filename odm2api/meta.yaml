@@ -9,7 +9,7 @@ source:
     git_tag: v{{ version }}-alpha
 
 build:
-    number: 0
+    number: 1
     skip: True  # [py3k]
     script: python setup.py install --single-version-externally-managed --record record.txt
 
@@ -24,7 +24,6 @@ requirements:
         - sqlalchemy
         - geoalchemy-odm2
         - shapely
-        - dateutils
         - pandas
         - psycopg2
         - six
