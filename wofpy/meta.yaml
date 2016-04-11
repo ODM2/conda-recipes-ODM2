@@ -1,0 +1,56 @@
+package:
+    name: wofpy
+    version: 2.0.9b0
+
+source:
+    fn: WOFpy-2.0.9b0.zip
+    url: https://pypi.python.org/packages/source/W/WOFpy/WOFpy-2.0.9b0.zip
+    md5: 7c70ed2711bbc4b38ed0f6a50b3fcc83
+
+build:
+    number: 0
+    skip: True  # [py3k]
+    script: python setup.py install --single-version-externally-managed --record record.txt
+
+requirements:
+    build:
+        - python
+        - setuptools
+    run:
+        - python
+        - flask >=0.10.0
+        - lxml >=3.4.4
+        - spyne >=2.12.8
+        - python-dateutil ==1.5.0
+        - jinja2
+        - pytz
+
+test:
+    imports:
+        - examples
+        - examples.flask
+        - examples.flask.barebones
+        - examples.flask.barebones.tests
+        - examples.flask.cbi
+        - examples.flask.csv_server
+        - examples.flask.csv_tutorial
+        - examples.flask.csv_tutorial.solution
+        - examples.flask.csv_tutorial.tutorial
+        - examples.flask.odm2
+        - examples.flask.odm2.measurement
+        - examples.flask.odm2.timeseries
+        - examples.flask.odm_1_1
+        - examples.flask.swis
+        - wof
+        - wof.apps
+        - wof.flask
+
+about:
+    home: https://github.com/ODM2/WOFpy
+    license: BSD-3-Clause
+    summary: Serve WaterOneFlow web services
+
+extra:
+    recipe-maintainers:
+        - ocefpaf
+        - emiliom
