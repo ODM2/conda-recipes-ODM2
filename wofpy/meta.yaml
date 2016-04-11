@@ -18,10 +18,10 @@ requirements:
         - setuptools
     run:
         - python
-        - flask >=0.10.0
-        - lxml >=3.4.4
-        - spyne >=2.12.8
-        - python-dateutil ==1.5.0
+        - flask
+        - lxml
+        - spyne
+        - python-dateutil
         - jinja2
         - pytz
 
