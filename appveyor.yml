@@ -79,4 +79,5 @@ install:
 build: off
 
 test_script:
-    - '%CMD_IN_ENV% conda-build-all .\ --upload-channels odm2 --matrix-conditions "numpy >=1.9" "%PY_CONDITION%"'
+    - if not "%BINSTAR_TOKEN%"=="" (set UPLOAD="--upload-channels odm2") else (set UPLOAD=)
+    - '%CMD_IN_ENV% conda-build-all .\ %UPLOAD% --inspect-channels odm2 --matrix-conditions "numpy >=1.9" "%PY_CONDITION%"'
