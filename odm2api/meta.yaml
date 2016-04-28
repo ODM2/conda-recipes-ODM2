@@ -10,7 +10,7 @@ source:
     sha256: 861ff24fc7c3851fe3908d5ae47c07cde25b1fe0a42886a335c70bf0ec98b8cf
 
 build:
-    number: 0
+    number: 1
     skip: True  # [py3k]
     script: python setup.py install --single-version-externally-managed --record record.txt
 
@@ -26,7 +26,7 @@ requirements:
         - geoalchemy-odm2
         - shapely
         - pandas
-        - psycopg2  # [not win]
+        - psycopg2
         - six
 
 test:
