@@ -1,0 +1,9 @@
+name: ODM2
+channels:
+    - ODM2
+dependencies:
+    - python=2.7
+    - odm2api
+    - wofpy
+    - jupyter
+    - matplotlib
