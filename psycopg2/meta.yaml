@@ -1,0 +1,41 @@
+{% set version = "2.6.1" %}
+
+package:
+    name: psycopg2
+    version: {{ version }}
+
+source:
+    fn: psycopg2-{{ version }}.tar.gz
+    url: https://pypi.python.org/packages/86/fd/cc8315be63a41fe000cce20482a917e874cdc1151e62cb0141f5e55f711e/psycopg2-{{ version }}.tar.gz
+    md5: 842b44f8c95517ed5b792081a2370da1
+
+build:
+    number: 0
+    skip: True  # [win and py35]
+    skip: True  # [win64 and py34]
+
+requirements:
+    build:
+        - python
+        - pip
+        - postgresql  # [not win]
+        - openssl  # [not win]
+    run:
+        - python
+        - postgresql  # [not win]
+        - openssl  # [not win]
+
+test:
+    imports:
+        - psycopg2
+        - psycopg2._psycopg
+
+about:
+    home: http://initd.org/psycopg/
+    license: LGPL, BSD-like, ZPL
+    summary: Python-PostgreSQL Database Adapter
+
+
+extra:
+    recipe-maintainers:
+        - ocefpaf
