@@ -7,3 +7,4 @@ dependencies:
     - wofpy
     - jupyter
     - matplotlib
+    - folium
