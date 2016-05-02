@@ -35,4 +35,4 @@ script:
       else
         export UPLOAD="--upload-channels odm2";
       fi
-    - conda-build-all ./ $UPLOAD --inspect-channels odm2 --matrix-conditions "numpy >=1.9" "python >=2.7,<3|>=3.4"
+    - conda-build-all ./recipes $UPLOAD --inspect-channels odm2 --matrix-conditions "numpy >=1.9" "python >=2.7,<3|>=3.4"
