@@ -12,17 +12,14 @@ import shutil
 import subprocess
 import yaml
 
-root_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+root_dir = os.path.dirname(os.path.dirname(__file__))
 root_dir = os.path.join(root_dir, 'recipes')
 
 def copy(src, dst):
     try:
         shutil.copytree(src, dst)
     except OSError as e:
-        if e.errno == errno.ENOTDIR:
-            shutil.copy(src, dst)
-        else:
-            raise e
+        shutil.copy(src, dst)
 
 
 def fetch_source(recipe_dir):
@@ -48,7 +45,8 @@ def fetch_source(recipe_dir):
     if os.path.exists(repo_dir):
         subprocess.check_call(['git', 'pull'], cwd=repo_dir)
     else:
-        subprocess.check_call(['git', 'clone', 'https://github.com/{}.git'.format(source['gh-repo']), repo_dir])  # noqa
+        url = 'https://github.com/{}.git'.format(source['gh-repo'])
+        subprocess.check_call(['git', 'clone', url, repo_dir])
 
     subprocess.check_call(['git', 'checkout', source['git-tag']], cwd=repo_dir)
 
