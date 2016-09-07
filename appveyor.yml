@@ -7,11 +7,9 @@ environment:
   # See: http://stackoverflow.com/a/13751649/163740
   CMD_IN_ENV: "cmd /E:ON /V:ON /C obvci_appveyor_python_build_env.cmd"
 
-  # Workaround for https://github.com/conda/conda-build/issues/636
-  PYTHONIOENCODING: "UTF-8"
-
   BINSTAR_TOKEN:
-    # Generated with "binstar auth --create --name <username> -o <channel>" and encrypted on ci.appveyor.com/tools/encrypt.
+    # Generated with "binstar auth --create --name <username> -o <channel>" and
+    # encrypted on ci.appveyor.com/tools/encrypt.
     secure: MRDxJnJIsrkbzfGl8uPFGZF9heiLXjYref0Dc6Cou6KfzSwMbNfckvvQyi++M8JL
 
   matrix:
@@ -36,7 +34,6 @@ environment:
       CONDA_PY: "35"
       PY_CONDITION: "python >=3.5"
 
-
 # We always use a 64-bit machine, but can build x86 distributions with the TARGET_ARCH variable.
 platform:
     - x64
@@ -54,7 +51,7 @@ install:
     # Remove cygwin (and therefore the git that comes with it).
     - cmd: rmdir C:\cygwin /s /q
 
-    # Use the pre-installed Miniconda for the desired arch
+    # Use the pre-installed Miniconda for the desired arch.
     - ps: if($env:TARGET_ARCH -eq 'x86')
             {$root = "C:\Miniconda"}
           else
@@ -64,12 +61,15 @@ install:
     - cmd: set PYTHONUNBUFFERED=1
 
     - cmd: conda config --add channels odm2
-    - cmd: conda install --yes --quiet --channel conda-forge obvious-ci conda-build-all
-    - cmd: obvci_install_conda_build_tools.py
+    - cmd: conda config --set show_channel_urls yes
+
+    - cmd: conda install -c conda-forge obvious-ci --yes
+    - cmd: conda install -c conda-forge conda-build-all=0.13.3 conda-build=1.21.11 conda-execute --yes
+    - cmd: conda install jinja2 anaconda-client --yes
 
     # Expand external recipes sources.
-    - cmd: conda install --yes --quiet pyyaml
-    - cmd: python scripts/expand_source.py
+    - cmd: conda execute -v scripts/expand_source.py
+
     - cmd: conda info
 
 # Skip .NET project specific build phase.
@@ -77,4 +77,4 @@ build: off
 
 test_script:
     - cmd: if not "%BINSTAR_TOKEN%" == "" (set UPLOAD=--upload-channels odm2) else (set UPLOAD=)
-    - '%CMD_IN_ENV% conda-build-all .\recipes %UPLOAD% --inspect-channels odm2 --matrix-conditions "numpy >=1.9" "%PY_CONDITION%"'
+    - '%CMD_IN_ENV% conda-build-all .\recipes %UPLOAD% --inspect-channels odm2/label/main --matrix-conditions "numpy >=1.9" "%PY_CONDITION%"'
