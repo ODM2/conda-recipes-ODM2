@@ -1,44 +1,44 @@
-{% set version = "0.5.1" %}
+{% set version = "0.5.2" %}
 
 package:
-    name: odm2api
-    version: {{ version }}.a0
+  name: odm2api
+  version: {{ version }}.a0
 
 source:
-    fn: odm2api-v{{ version }}-alpha.tar.gz
-    url: https://github.com/ODM2/ODM2PythonAPI/archive/v{{ version }}-alpha.tar.gz
-    sha256: e354df1926851bec9f6a112cc653db48f050e3363fafe591609ed4316e1957af
+  fn: odm2api-v{{ version }}-alpha.tar.gz
+  url: https://github.com/ODM2/ODM2PythonAPI/archive/v{{ version }}-alpha.tar.gz
+  sha256: bb936bc812ffea93197050843bcba32ed594de3b0c31d42c90b555f7ef57e8e6
 
 build:
-    number: 0
-    skip: True  # [py3k]
-    script: python setup.py install --single-version-externally-managed --record record.txt
+  number: 0
+  skip: True  # [py3k]
+  script: python setup.py install --single-version-externally-managed --record record.txt
 
 requirements:
-    build:
-        - python
-        - setuptools
-    run:
-        - python
-        - pyodbc
-        - pymysql
-        - sqlalchemy
-        - geoalchemy-odm2
-        - shapely
-        - pandas
-        - psycopg2
-        - six
+  build:
+    - python
+    - setuptools
+  run:
+    - python
+    - pyodbc
+    - pymysql
+    - sqlalchemy
+    - geoalchemy-odm2
+    - shapely
+    - pandas
+    - psycopg2
+    - six
 
 test:
-    imports:
-        - odm2api
+  imports:
+    - odm2api
 
 about:
-    home: https://github.com/ODM2/ODM2PythonAPI
-    license: BSD 3-Clause
-    summary: A Python-based application programmer's interface for the Observations Data Model 2 (ODM2)
+  home: https://github.com/ODM2/ODM2PythonAPI
+  license: BSD 3-Clause
+  summary: "A Python-based application programmer's interface for the Observations Data Model 2 (ODM2)."
 
 extra:
-    recipe-maintainers:
-        - ocefpaf
-        - emiliom
+  recipe-maintainers:
+    - ocefpaf
+    - emiliom
