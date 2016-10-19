@@ -1,34 +1,34 @@
 language: generic
 
-os:
-    - osx
-
 sudo: false
 
+os:
+  - osx
+
 env:
-    global:
-        secure: "ZnEdu0lLBRXVLnqSU9duTu+IjSnPs0YOkfvcyspbpI8OewCx+g5DiWRCjcU9GOGscoYoMdTUOwh/E6CloEhAlxaOxtAK4yKFhewu2bUwnZTWwoL+AL9pJZ9z1jUHAU5asAcganYP691g0YO/O9y7h2OedGrmAjDSigdAHE/FtgBuXANfJAIN78cP899XwYQyWYZmeLNtWTKD2kpKv1Z6Y5ivp7cmjn19wwLJekShNMEe2CiTY44rkwwHXNPuoKELQZEE+8TJdFbLm7rh5weucOqtvWuXr0BFS9Kbw/SLKZUWfnrZ9GttNRE7Gi+R/NhXWRIZw4rSkl0njw4jFu/tmojHDAq874hEWqLIjrdrWAqs9ee3JmfcyQQzWPiGIlshiilPC/nyV7Oo45RlPZiceMac5u05kjA1WLGzXnHHdQmfZ8/M7szGLN+jmFE0vYajM9mYihKWhQpIkPVVIEe2k6eRt06zoBqAP4yP/9SIOgW4ik+gwnCWflNEA2vGZV2+s+5KQ7Q8FB+9XjghUY8LooUNGkzasy7vjizaOIt4c2fC3cYQB2Lxhf0L6ulhB7v/u4SSi55bjGm3vI/SNA0pbXVFVaclsaBuTV4dLItRpjyy0quNPdji2oQEBKW58R9rB8Kv7YcHyv2ozty40p5nMutoWWQ3wy2BgsYkxWVcaY4="
+  global:
+    secure: "ZnEdu0lLBRXVLnqSU9duTu+IjSnPs0YOkfvcyspbpI8OewCx+g5DiWRCjcU9GOGscoYoMdTUOwh/E6CloEhAlxaOxtAK4yKFhewu2bUwnZTWwoL+AL9pJZ9z1jUHAU5asAcganYP691g0YO/O9y7h2OedGrmAjDSigdAHE/FtgBuXANfJAIN78cP899XwYQyWYZmeLNtWTKD2kpKv1Z6Y5ivp7cmjn19wwLJekShNMEe2CiTY44rkwwHXNPuoKELQZEE+8TJdFbLm7rh5weucOqtvWuXr0BFS9Kbw/SLKZUWfnrZ9GttNRE7Gi+R/NhXWRIZw4rSkl0njw4jFu/tmojHDAq874hEWqLIjrdrWAqs9ee3JmfcyQQzWPiGIlshiilPC/nyV7Oo45RlPZiceMac5u05kjA1WLGzXnHHdQmfZ8/M7szGLN+jmFE0vYajM9mYihKWhQpIkPVVIEe2k6eRt06zoBqAP4yP/9SIOgW4ik+gwnCWflNEA2vGZV2+s+5KQ7Q8FB+9XjghUY8LooUNGkzasy7vjizaOIt4c2fC3cYQB2Lxhf0L6ulhB7v/u4SSi55bjGm3vI/SNA0pbXVFVaclsaBuTV4dLItRpjyy0quNPdji2oQEBKW58R9rB8Kv7YcHyv2ozty40p5nMutoWWQ3wy2BgsYkxWVcaY4="
 
 before_install:
-    - brew remove --force $(brew list)
+  - brew remove --force $(brew list)
 
 install:
-    # Install miniconda.
-    - curl -O https://raw.githubusercontent.com/pelson/Obvious-CI/master/bootstrap-obvious-ci-and-miniconda.py
-    - python bootstrap-obvious-ci-and-miniconda.py ~/miniconda x64 2 --without-obvci && source ~/miniconda/bin/activate root
+  # Install miniconda.
+  - curl -O https://raw.githubusercontent.com/pelson/Obvious-CI/master/bootstrap-obvious-ci-and-miniconda.py
+  - python bootstrap-obvious-ci-and-miniconda.py ~/miniconda x64 2 --without-obvci && source ~/miniconda/bin/activate root
 
-    # This numpy variable is not used, but conda-build complains if we haven't set it already.
-    - export CONDA_NPY=19
+  # This numpy variable is not used, but conda-build complains if we haven't set it already.
+  - export CONDA_NPY=19
 
-    - conda config --add channels odm2
-    - conda install --yes --quiet -c conda-forge obvious-ci
-    - obvci_install_conda_build_tools.py
-    - conda install -c conda-forge conda-build-all=0.13.3 conda-build=1.21.11 --yes
+  - conda config --add channels odm2
+  - conda install -c conda-forge conda-build-all conda-build --yes
+  - conda install jinja2 anaconda-client --yes
 
-    # Expand external recipe sources.
-    - python scripts/expand_source.py
+  - conda info
 
-    - conda info
+  # Expand external recipe sources.
+  - python scripts/expand_source.py
+
 
 script:
     - if [[ "$BINSTAR_TOKEN" == "" ]]; then
