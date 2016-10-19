@@ -21,14 +21,10 @@ install:
   - export CONDA_NPY=19
 
   - conda config --add channels odm2
-  - conda install -c conda-forge conda-build-all conda-build --yes
-  - conda install jinja2 anaconda-client --yes
+  - conda install conda-build jinja2 anaconda-client --yes
+  - conda install -c conda-forge conda-build-all --yes
 
   - conda info
-
-  # Expand external recipe sources.
-  - python scripts/expand_source.py
-
 
 script:
     - if [[ "$BINSTAR_TOKEN" == "" ]]; then

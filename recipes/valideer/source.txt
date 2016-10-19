@@ -1,3 +1,0 @@
-gh-repo: conda-forge/valideer-feedstock
-git-tag: master
-contents: recipe/*

@@ -1,7 +1,0 @@
-# This is a placeholder meta, the canonical one comes from source.txt
-
-package:
-   name: geos
-
-build:
-   script: exit 1

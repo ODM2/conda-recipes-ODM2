@@ -1,3 +1,0 @@
-gh-repo: conda-forge/folium-feedstock
-git-tag: master
-contents: recipe/*

@@ -1,39 +1,39 @@
 {% set version = "1.5" %}
 
 package:
-    name: python-dateutil
-    version: {{ version }}
+  name: python-dateutil
+  version: {{ version }}
 
 source:
-    fn: python-dateutil-{{ version }}.tar.gz
-    url: https://pypi.python.org/packages/source/p/python-dateutil/python-dateutil-{{ version }}.tar.gz
-    md5: 0dcb1de5e5cad69490a3b6ab63f0cfa5
+  fn: python-dateutil-{{ version }}.tar.gz
+  url: https://pypi.io/packages/source/p/python-dateutil/python-dateutil-{{ version }}.tar.gz
+  md5: 0dcb1de5e5cad69490a3b6ab63f0cfa5
 
 build:
-    number: 0
-    skip: True  # [py3k]
-    script: python setup.py install --single-version-externally-managed --record record.txt
+  number: 1
+  skip: True  # [py3k]
+  script: python setup.py install --single-version-externally-managed --record record.txt
 
 requirements:
-    build:
-        - python
-        - setuptools
-    run:
-        - python
-        - six >=1.5
+  build:
+    - python
+    - setuptools
+  run:
+    - python
+    - six >=1.5
 
 test:
-    imports:
-        - dateutil
-        - dateutil.tz
-        - dateutil.zoneinfo
+  imports:
+    - dateutil
+    - dateutil.tz
+    - dateutil.zoneinfo
 
 about:
-    home: https://dateutil.readthedocs.org
-    license: BSD-3-Clause
-    summary: Extensions to the standard Python datetime module
+  home: https://dateutil.readthedocs.org
+  license: BSD 3-Clause
+  summary: 'Extensions to the standard Python datetime module.'
 
 extra:
-    recipe-maintainers:
-        - ocefpaf
-        - emiliom
+  recipe-maintainers:
+    - ocefpaf
+    - emiliom
