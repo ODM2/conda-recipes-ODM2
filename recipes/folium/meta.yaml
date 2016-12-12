@@ -1,7 +1,37 @@
-# This is a placeholder meta, the canonical one comes from source.txt
+{% set version = "0.2.1" %}
 
 package:
-   name: folium
+  name: folium
+  version: {{ version }}
+
+source:
+  fn: folium-{{ version }}.tar.gz
+  url: https://pypi.io/packages/source/f/folium/folium-{{ version }}.tar.gz
+  md5: af353f2613127bc4cf64a346e550506f
 
 build:
-   script: exit 1
+  number: 1
+  script: python setup.py install --single-version-externally-managed --record record.txt
+
+requirements:
+  build:
+    - python
+    - setuptools
+  run:
+    - python
+    - jinja2
+    - numpy
+    - pandas
+
+test:
+  imports:
+    - folium
+
+about:
+  home: https://github.com/python-visualization/folium
+  license: MIT
+  summary: 'Make beautiful maps with Leaflet.js and Python.'
+
+extra:
+  recipe-maintainers:
+    - ocefpaf

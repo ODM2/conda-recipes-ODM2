@@ -1,39 +1,41 @@
-{% set version = "0.7.3" %}
+{% set version = "0.7.4" %}
 
 package:
-    name: geoalchemy-odm2
-    version: {{ version }}
+  name: geoalchemy-odm2
+  version: {{ version }}
 
 source:
-    git_url: https://github.com/ODM2/geoalchemy.git
-    git_tag: v{{ version }}
+  fn: geoalchemy-odm2-{{ version }}.tar.gz
+  url: https://github.com/ODM2/geoalchemy/archive/v{{ version }}.tar.gz
+  sha256: fbbfb448f601037c9bc15c5314047cd049a1c2dd5659d6078c6ef3ba1cc8508e
 
 build:
-    number: 0
-    skip: True  # [py3k]
-    preserve_egg_dir: True
-    script: python setup.py install --single-version-externally-managed --record record.txt
+  number: 0
+  preserve_egg_dir: True
+  script: python setup.py install --single-version-externally-managed --record record.txt
 
 requirements:
-    build:
-        - python
-        - setuptools
-        - sqlalchemy >=0.6.1
-    run:
-        - python
-        - sqlalchemy >=0.6.1
+  build:
+    - python
+    - setuptools
+    - sqlalchemy >=0.6.1
+    - six
+  run:
+    - python
+    - sqlalchemy >=0.6.1
+    - six
 
 test:
-    imports:
-        - geoalchemy
-        - geoalchemy.tests
+  imports:
+    - geoalchemy
+    - geoalchemy.tests
 
 about:
-    home: http://geoalchemy.org/
-    license: MIT
-    summary: Using SQLAlchemy with Spatial Databases. (This is a ODM2 fork and not the original geoalchemy!)
+  home: http://geoalchemy.org/
+  license: MIT
+  summary: 'Using SQLAlchemy with Spatial Databases. (This is a ODM2 fork and not the original geoalchemy!)'
 
 extra:
-    recipe-maintainers:
-        - ocefpaf
-        - emiliom
+  recipe-maintainers:
+    - ocefpaf
+    - emiliom

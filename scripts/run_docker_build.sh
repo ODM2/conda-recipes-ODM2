@@ -37,17 +37,14 @@ export PYTHONUNBUFFERED=1
 echo "$config" > ~/.condarc
 
 conda update conda --yes
-conda install -c conda-forge conda-build-all conda-build --yes
-conda install jinja2 anaconda-client --yes
+conda install conda-build jinja2 anaconda-client --yes
+conda install -c conda-forge conda-build-all --yes
 
 # A lock sometimes occurs with incomplete builds.
 conda clean --lock
 
 conda info
 
-# Expand external recipes sources.
-python /conda-recipes/scripts/expand_source.py
-
-conda-build-all /conda-recipes/recipes $UPLOAD --inspect-channels $UPLOAD_OWNER --matrix-conditions "numpy >=1.9" "python >=2.7,<3|>=3.4"
+conda-build-all /conda-recipes/recipes $UPLOAD --inspect-channels $UPLOAD_OWNER --matrix-conditions "numpy >=1.11" "python >=2.7,<3|>=3.4,<3.6"
 
 EOF

@@ -1,7 +1,40 @@
-# This is a placeholder meta, the canonical one comes from source.txt
+{% set version = "2.6.2" %}
 
 package:
-   name: psycopg2
+  name: psycopg2
+  version: {{ version }}
+
+source:
+  fn: psycopg2-{{ version }}.tar.gz
+  url: https://pypi.io/packages/source/p/psycopg2/psycopg2-{{ version }}.tar.gz
+  sha256: 70490e12ed9c5c818ecd85d185d363335cc8a8cbf7212e3c185431c79ff8c05c
+  patches:
+    - have_openssl.patch
 
 build:
-   script: exit 1
+  number: 2
+
+requirements:
+  build:
+    - openssl 1.0.*
+    - postgresql
+    - python
+  run:
+    # libpq is a repackaging of only the library to connect to postgres
+    - libpq
+    - openssl 1.0.*
+    - python
+
+test:
+  imports:
+    - psycopg2
+    - psycopg2._psycopg
+
+about:
+  home: http://initd.org/psycopg/
+  license: LGPL, BSD-like, ZPL
+  summary: 'Python-PostgreSQL Database Adapter.'
+
+extra:
+  recipe-maintainers:
+    - ocefpaf
