@@ -1,14 +1,16 @@
+{% set version = "2.0.10b0" %}
+
 package:
   name: wofpy
-  version: 2.0.9b0
+  version: {{ version }}
 
 source:
-  fn: WOFpy-2.0.9b0.zip
-  url: https://pypi.python.org/packages/source/W/WOFpy/WOFpy-2.0.9b0.zip
-  md5: 7c70ed2711bbc4b38ed0f6a50b3fcc83
+  fn: WOFpy-{{ version }}.zip
+  url: https://pypi.io/packages/source/W/WOFpy/WOFpy-{{ version }}.zip
+  sha256: a159c47a4db1610b1925fe7e508347fa603fd9fa53f95be183c7878833f76712
 
 build:
-  number: 1
+  number: 0
   skip: True  # [py3k]
   script: python setup.py install --single-version-externally-managed --record record.txt
 

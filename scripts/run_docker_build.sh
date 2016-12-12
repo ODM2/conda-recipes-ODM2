@@ -45,6 +45,6 @@ conda clean --lock
 
 conda info
 
-conda-build-all /conda-recipes/recipes $UPLOAD --inspect-channels $UPLOAD_OWNER --matrix-conditions "numpy >=1.9" "python >=2.7,<3|>=3.4"
+conda-build-all /conda-recipes/recipes $UPLOAD --inspect-channels $UPLOAD_OWNER --matrix-conditions "numpy >=1.11" "python >=2.7,<3|>=3.4,<3.6"
 
 EOF
