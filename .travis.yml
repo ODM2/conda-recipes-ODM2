@@ -1,9 +1,8 @@
 language: generic
 
-sudo: false
+os: osx
 
-os:
-  - osx
+sudo: false
 
 env:
   global:
@@ -20,9 +19,10 @@ install:
   # This numpy variable is not used, but conda-build complains if we haven't set it already.
   - export CONDA_NPY=19
 
+  - conda config --set show_channel_urls true
   - conda config --add channels odm2
-  - conda install conda-build jinja2 anaconda-client --yes
-  - conda install -c conda-forge conda-build-all --yes
+  - conda install --yes --channel conda-forge obvious-ci conda-build-all
+  - obvci_install_conda_build_tools.py
 
   - conda info
 

@@ -36,9 +36,9 @@ export CONDA_NPY='19'
 export PYTHONUNBUFFERED=1
 echo "$config" > ~/.condarc
 
-conda update conda --yes
-conda install conda-build jinja2 anaconda-client --yes
-conda install -c conda-forge conda-build-all --yes
+conda update --yes conda
+conda install --yes -c conda-forge obvious-ci conda-build-all
+conda install --yes anaconda-client
 
 # A lock sometimes occurs with incomplete builds.
 conda clean --lock
