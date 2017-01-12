@@ -23,13 +23,15 @@ install:
   - conda config --add channels odm2
   - conda install --yes -c odm2 -c conda-forge obvious-ci conda-build-all
   - obvci_install_conda_build_tools.py
+  # Temporary workaround to boostrap our conda-build-all build.
+  - conda install --yes conda-build=2.0.10
 
   - conda info
 
 script:
-    - if [[ "$BINSTAR_TOKEN" == "" ]]; then
-        export UPLOAD="";
-      else
-        export UPLOAD="--upload-channels odm2";
-      fi
-    - conda-build-all ./recipes $UPLOAD --inspect-channels odm2 --matrix-conditions "numpy >=1.11" "python >=2.7,<3|>=3.4,<3.6"
+  - if [[ "$BINSTAR_TOKEN" == "" ]]; then
+      export UPLOAD="";
+    else
+      export UPLOAD="--upload-channels odm2";
+    fi
+  - conda-build-all ./recipes $UPLOAD --inspect-channels odm2 --matrix-conditions "numpy >=1.11" "python >=2.7,<3|>=3.4,<3.6"
