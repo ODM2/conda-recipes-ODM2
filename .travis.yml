@@ -21,7 +21,7 @@ install:
 
   - conda config --set show_channel_urls true
   - conda config --add channels odm2
-  - conda install --yes --channel conda-forge obvious-ci conda-build-all
+  - conda install --yes -c odm2 -c conda-forge obvious-ci conda-build-all
   - obvci_install_conda_build_tools.py
 
   - conda info

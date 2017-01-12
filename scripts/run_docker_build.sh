@@ -37,8 +37,7 @@ export PYTHONUNBUFFERED=1
 echo "$config" > ~/.condarc
 
 conda update --yes conda
-conda install --yes -c conda-forge obvious-ci conda-build-all
-conda install --yes anaconda-client
+conda install --yes -c odm2 -c conda-forge obvious-ci conda-build-all
 
 # A lock sometimes occurs with incomplete builds.
 conda clean --lock
