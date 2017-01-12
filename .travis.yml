@@ -9,7 +9,7 @@ env:
     secure: "ZnEdu0lLBRXVLnqSU9duTu+IjSnPs0YOkfvcyspbpI8OewCx+g5DiWRCjcU9GOGscoYoMdTUOwh/E6CloEhAlxaOxtAK4yKFhewu2bUwnZTWwoL+AL9pJZ9z1jUHAU5asAcganYP691g0YO/O9y7h2OedGrmAjDSigdAHE/FtgBuXANfJAIN78cP899XwYQyWYZmeLNtWTKD2kpKv1Z6Y5ivp7cmjn19wwLJekShNMEe2CiTY44rkwwHXNPuoKELQZEE+8TJdFbLm7rh5weucOqtvWuXr0BFS9Kbw/SLKZUWfnrZ9GttNRE7Gi+R/NhXWRIZw4rSkl0njw4jFu/tmojHDAq874hEWqLIjrdrWAqs9ee3JmfcyQQzWPiGIlshiilPC/nyV7Oo45RlPZiceMac5u05kjA1WLGzXnHHdQmfZ8/M7szGLN+jmFE0vYajM9mYihKWhQpIkPVVIEe2k6eRt06zoBqAP4yP/9SIOgW4ik+gwnCWflNEA2vGZV2+s+5KQ7Q8FB+9XjghUY8LooUNGkzasy7vjizaOIt4c2fC3cYQB2Lxhf0L6ulhB7v/u4SSi55bjGm3vI/SNA0pbXVFVaclsaBuTV4dLItRpjyy0quNPdji2oQEBKW58R9rB8Kv7YcHyv2ozty40p5nMutoWWQ3wy2BgsYkxWVcaY4="
 
 before_install:
-  - brew remove --force $(brew list)
+  - brew remove --ignore-dependencies --force $(brew list)
 
 install:
   # Install miniconda.
@@ -36,4 +36,4 @@ script:
     else
       export UPLOAD="--upload-channels odm2";
     fi
-  - conda-build-all ./recipes $UPLOAD --inspect-channels odm2 --matrix-conditions "numpy >=1.11" "python >=2.7,<3|>=3.4,<3.6"
+  - conda-build-all ./recipes $UPLOAD --inspect-channels odm2 --matrix-conditions "numpy >=1.11" "python >=2.7,<3|>=3.5,<=3.6"
