@@ -1,4 +1,4 @@
-{% set version = "1.0.1" %}
+{% set version = "1.0.2" %}
 
 package:
   name: conda-build-all
@@ -7,9 +7,7 @@ package:
 source:
     fn: conda-build-all_v{{ version }}.tar.gz
     url: https://github.com/SciTools/conda-build-all/archive/v{{version}}.tar.gz
-    sha256: 1e34102f9055ce99500ce8ec87933d46a482cd20b865a180f2b064b4baf345f0
-    patches:
-    - conda_build2.patch
+    sha256: 5b22fb3e427852d22db35902f8d833beaecb1a5ec99aaf7fa6c9acfb324ced06
 
 build:
   number: 0
@@ -36,9 +34,10 @@ test:
     - conda build-all --version
 
 about:
-  license: BSD 3-clause
   home: https://github.com/scitools/conda-build-all
-  summary: 'conda build-all is a conda subcommand which allows multiple distributions to be built (and uploaded) in a single command.'
+  license: BSD 3-clause
+  license_file: LICENSE
+  summary: conda build-all is a conda subcommand which allows multiple distributions to be built (and uploaded) in a single command
 
 extra:
   recipe-maintainers:
