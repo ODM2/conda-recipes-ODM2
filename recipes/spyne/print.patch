@@ -1,0 +1,26 @@
+--- spyne-2.12.14.orig/spyne/test/transport/test_msgpack.py	2016-10-28 08:15:20.000000000 -0300
++++ spyne-2.12.14/spyne/test/transport/test_msgpack.py	2017-01-25 08:23:14.168238963 -0300
+@@ -54,9 +54,9 @@
+         request = msgpack.packb({'yay': [v]})
+         prot.dataReceived(msgpack.packb([1, request]))
+         val = prot.transport.value()
+-        print repr(val)
++        print(repr(val))
+         val = msgpack.unpackb(val)
+-        print repr(val)
++        print(repr(val))
+ 
+         self.assertEquals(val, [0, msgpack.packb(v)])
+ 
+@@ -82,9 +82,9 @@
+         request = msgpack.packb({'yay': [v]})
+         def _ccb(_):
+             val = prot.transport.value()
+-            print repr(val)
++            print(repr(val))
+             val = msgpack.unpackb(val)
+-            print repr(val)
++            print(repr(val))
+ 
+             self.assertEquals(val, [0, msgpack.packb(v)])
+ 
