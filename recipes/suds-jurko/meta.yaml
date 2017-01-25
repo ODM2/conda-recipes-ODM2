@@ -1,0 +1,44 @@
+{% set version = "0.6" %}
+
+package:
+  name: suds-jurko
+  version: {{ version }}
+
+source:
+  fn: suds-jurko-{{ version }}.tar.bz2
+  url: https://pypi.io/packages/source/s/suds-jurko/suds-jurko-{{ version }}.tar.bz2
+  sha256: 29edb72fd21e3044093d86f33c66cf847c5aaab26d64cb90e69e528ef014e57f
+
+build:
+  number: 0
+  script: python setup.py install --single-version-externally-managed --record record.txt
+
+requirements:
+  build:
+    - python
+    - setuptools
+  run:
+    - python
+
+test:
+  imports:
+    - suds
+    - suds.bindings
+    - suds.mx
+    - suds.sax
+    - suds.transport
+    - suds.umx
+    - suds.xsd
+    - tests
+    - tests.external
+
+about:
+  home: http://bitbucket.org/jurko/suds
+  license: LGPL-3.0
+  license_file: LICENSE.txt
+  summary: "Lightweight SOAP client (Jurko's fork)."
+
+extra:
+  recipe-maintainers:
+    - ocefpaf
+    - msarahan

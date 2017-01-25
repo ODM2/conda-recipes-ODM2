@@ -70,7 +70,9 @@ install:
   - cmd: conda config --add channels odm2
   - cmd: conda install --yes -c odm2 -c conda-forge obvious-ci conda-build-all
   - cmd: obvci_install_conda_build_tools.py
+
   # Temporary workaround to bootstrap latest conda-build-all.
+  - cmd: conda install --yes conda-build=2.0.10
   - cmd: conda install --yes conda==4.2.13
 
   - cmd: conda info
