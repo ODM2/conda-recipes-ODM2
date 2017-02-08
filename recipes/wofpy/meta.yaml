@@ -1,13 +1,13 @@
-{% set version = "2.0.10b0" %}
+{% set version = "2.0.11b0" %}
 
 package:
   name: wofpy
   version: {{ version }}
 
 source:
-  fn: WOFpy-{{ version }}.zip
-  url: https://pypi.io/packages/source/W/WOFpy/WOFpy-{{ version }}.zip
-  sha256: a159c47a4db1610b1925fe7e508347fa603fd9fa53f95be183c7878833f76712
+  fn: WOFpy-{{ version }}.tar.gz
+  url: https://github.com/ODM2/WOFpy/archive/{{ version }}.tar.gz
+  sha256: 984452fb7852c0aeb5a7ffeb9174d703f53ed2f71e210d933deb4132b3c6eadc
 
 build:
   number: 0
