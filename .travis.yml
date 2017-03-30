@@ -17,26 +17,28 @@ before_install:
 
 install:
   # Install miniconda.
-  - curl -O https://raw.githubusercontent.com/pelson/Obvious-CI/master/bootstrap-obvious-ci-and-miniconda.py
-  - python bootstrap-obvious-ci-and-miniconda.py ~/miniconda x64 2 --without-obvci && source ~/miniconda/bin/activate root
+  - if [ "$TRAVIS_OS_NAME" == "osx" ]; then URL="https://repo.continuum.io/miniconda/Miniconda3-latest-MacOSX-x86_64.sh" ; fi
+  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then URL="https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh" ; fi
+  - curl -L $URL -o miniconda.sh
+  - bash miniconda.sh -b -p $HOME/miniconda
+  - export PATH="$HOME/miniconda/bin:$PATH"
+  - hash -r
+  - conda config --set always_yes yes --set changeps1 no
+  - conda config --set show_channel_urls true
+  - conda update --quiet conda
 
   # This numpy variable is not used, but conda-build complains if we haven't set it already.
   - export CONDA_NPY=19
-
-  - conda config --set show_channel_urls true
   - conda config --add channels odm2
-  - conda install --yes -c odm2 -c conda-forge obvious-ci conda-build-all
-  - obvci_install_conda_build_tools.py
-
   # Temporary workaround to bootstrap latest conda-build-all.
-  - conda install --yes conda-build=2.0.10
-  - conda install --yes conda==4.2.13
+  - conda install --yes conda-build-all
+  - conda install --yes conda==4.2.16
 
   - conda info
 
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then
-       conda env create --file environment.yml ;
-       source activate ODM2 ;
+      conda env create --file environment.yml ;
+      source activate ODM2 ;
     fi
 
 script:
@@ -46,7 +48,7 @@ script:
       export UPLOAD="--upload-channels odm2";
     fi
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
-       conda-build-all ./recipes $UPLOAD --inspect-channels odm2 --matrix-conditions "numpy >=1.11" "python >=2.7,<3|>=3.5,<=3.6" ;
+      conda-build-all ./recipes $UPLOAD --inspect-channels odm2 --matrix-conditions "numpy >=1.11" "python >=2.7,<3|>=3.5,<=3.6" ;
     fi
 
   # Packages integration tests via user notebooks.
