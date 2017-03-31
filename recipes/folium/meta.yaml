@@ -1,4 +1,4 @@
-{% set version = "0.2.1" %}
+{% set version = "0.3.0" %}
 
 package:
   name: folium
@@ -7,10 +7,10 @@ package:
 source:
   fn: folium-{{ version }}.tar.gz
   url: https://pypi.io/packages/source/f/folium/folium-{{ version }}.tar.gz
-  md5: af353f2613127bc4cf64a346e550506f
+  sha256: 7729ddd6766b9c5dab17b3709e2387935fd5c655872f1cbab7b7036474415217
 
 build:
-  number: 1
+  number: 0
   script: python setup.py install --single-version-externally-managed --record record.txt
 
 requirements:
@@ -30,6 +30,7 @@ test:
 about:
   home: https://github.com/python-visualization/folium
   license: MIT
+  license_file: LICENSE.txt
   summary: 'Make beautiful maps with Leaflet.js and Python.'
 
 extra:

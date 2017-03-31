@@ -1,4 +1,4 @@
-{% set version="2.0.8" %}
+{% set version="2.1.3" %}
 
 package:
   name: gitpython
@@ -6,8 +6,8 @@ package:
 
 source:
   fn: GitPython-{{ version }}.tar.gz
-  url: https://github.com/gitpython-developers/GitPython/archive/{{ version }}.tar.gz
-  sha256: adbc08a2244f5f00cd8d0dc7a115b55f269ca1677799393a86d499b6a4dd513e
+  url: https://pypi.io/packages/source/G/GitPython/GitPython-{{ version }}.tar.gz
+  sha256: 3826185b11e1fc372e7d31251e9b65e11ccb7c27f82c771d619048bdb5b66c81
 
 build:
   number: 0
