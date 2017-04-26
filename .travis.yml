@@ -30,8 +30,8 @@ install:
   # This numpy variable is not used, but conda-build complains if we haven't set it already.
   - export CONDA_NPY=19
   - conda config --add channels odm2
-  # Temporary workaround to bootstrap latest conda-build-all.
   - conda install --yes conda-build-all
+  # https://github.com/SciTools/conda-build-all/issues/79
   - conda install --yes conda==4.2.16
 
   - conda info
