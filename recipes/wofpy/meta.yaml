@@ -10,7 +10,7 @@ source:
   sha256: 984452fb7852c0aeb5a7ffeb9174d703f53ed2f71e210d933deb4132b3c6eadc
 
 build:
-  number: 0
+  number: 1
   skip: True  # [py3k]
   script: python setup.py install --single-version-externally-managed --record record.txt
 
@@ -26,6 +26,7 @@ requirements:
     - python-dateutil
     - jinja2
     - pytz
+    - mysql-python  # [py2k]
 
 test:
   imports:
