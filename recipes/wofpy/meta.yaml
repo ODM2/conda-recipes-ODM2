@@ -26,7 +26,7 @@ requirements:
     - python-dateutil
     - jinja2
     - pytz
-    - mysql-python  # [py2k]
+    - mysql-python  # [py2k and not osx]
 
 test:
   imports:
