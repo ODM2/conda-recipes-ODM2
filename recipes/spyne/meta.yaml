@@ -26,7 +26,7 @@ requirements:
     - pytz
     - lxml
     - zope.interface
-    - sqlalchemy # <=1.0.99
+    - sqlalchemy
     - pyzmq
     - werkzeug
     - pyparsing
