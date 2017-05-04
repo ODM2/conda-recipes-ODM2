@@ -12,7 +12,7 @@ source:
     - print.patch  # [py3k]
 
 build:
-  number: 0
+  number: 1
   script: python setup.py install --single-version-externally-managed --record record.txt
   entry_points:
     - sort_wsdl=spyne.test.sort_wsdl:main
@@ -26,7 +26,7 @@ requirements:
     - pytz
     - lxml
     - zope.interface
-    - sqlalchemy <1.0.99
+    - sqlalchemy
     - pyzmq
     - werkzeug
     - pyparsing
@@ -51,14 +51,14 @@ test:
     - spyne.model
     - spyne.model.primitive
     - spyne.protocol
-    - spyne.protocol.cloth  # [not osx]
+    #- spyne.protocol.cloth  # [not osx]
     - spyne.protocol.dictdoc
-    - spyne.protocol.html  # [not osx]
+    #- spyne.protocol.html  # [not osx]
     - spyne.protocol.soap  # [not osx]
     - spyne.server
     - spyne.server.twisted  # [not py3k]
     - spyne.store
-    - spyne.store.relational
+    #- spyne.store.relational
     - spyne.test
     - spyne.test.interface
     - spyne.test.interface.wsdl  # [not osx]
