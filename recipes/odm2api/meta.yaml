@@ -1,4 +1,4 @@
-{% set version = "0.5.3" %}
+{% set version = "0.6.0" %}
 
 package:
   name: odm2api
@@ -7,7 +7,7 @@ package:
 source:
   fn: odm2api-v{{ version }}-alpha.tar.gz
   url: https://github.com/ODM2/ODM2PythonAPI/archive/v{{ version }}-alpha.tar.gz
-  sha256: c82a67c75cc0600bf129f2edce1788798de3bc6d37d8e43a55e6a37e60df6f26
+  sha256: 13597f1b2b8fc74ea9e7c18ce85fffac5e60ff3b1eaf1ab0ca92a281211aa2bc
 
 build:
   number: 0
