@@ -1,0 +1,57 @@
+{% set version = "2.1.0b0" %}
+
+package:
+  name: wofpy
+  version: {{ version }}
+
+source:
+  fn: WOFpy-{{ version }}.tar.gz
+  url: https://pypi.io/packages/source/W/WOFpy/WOFpy-{{ version }}.tar.gz
+  sha256: 6f81c94990ad0307e7cc6e187fb7afb5f0c338428b0a60d3742ed163eec51d0b
+
+build:
+  number: 0
+  skip: True  # [py3k]
+  script: python setup.py install --single-version-externally-managed --record record.txt
+  entry_points:
+    - wofpy_config = wof.wofpy_config:main
+
+requirements:
+  build:
+    - python
+    - setuptools
+  run:
+    - python
+    - configparser  # [py2k]
+    - docopt
+    - flask >=0.10.0
+    - jinja2
+    - lxml >=3.4.4
+    - python-dateutil
+    - pytz
+    - spyne >=2.12.8
+    - odm2api
+    - pyodbc
+    - requests
+    - sqlalchemy
+    - suds-jurko
+    - uwsgi  # [not win]
+    - geoalchemy-odm2
+
+test:
+  imports:
+    - wof
+    - wof.apps
+    - wof.flask
+  commands:
+    - wofpy_config -h
+
+about:
+  home: https://github.com/ODM2/WOFpy
+  license: BSD 3-Clause
+  summary: 'Serve WaterOneFlow web services'
+
+extra:
+  recipe-maintainers:
+    - ocefpaf
+    - emiliom

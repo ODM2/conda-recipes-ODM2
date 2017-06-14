@@ -40,6 +40,11 @@ install:
   # Add path, activate `conda` and update conda.
   - cmd: call %CONDA_INSTALL_LOCN%\Scripts\activate.bat
   - cmd: conda config --set always_yes yes --set changeps1 no --set show_channel_urls true --set auto_update_conda false
+
+  # Add our channels.
+  - cmd: conda config --set show_channel_urls true
+  - cmd: conda config --add channels odm2
+
   #- cmd: conda update conda
   - cmd: conda install conda-build-all
   - cmd: conda install conda=4.2.16  # Temporary workaround for a bug in conda-build-all.
@@ -47,12 +52,6 @@ install:
   # Needed for building extensions in python2.7 x64 with cmake.
   - cmd: conda install --channel conda-forge vs2008_express_vc_python_patch
   - cmd: call setup_x64
-
-  # Add our channels.
-  - cmd: conda config --set show_channel_urls true
-  - cmd: conda config --remove channels defaults
-  - cmd: conda config --add channels defaults
-  - cmd: conda config --add channels odm2
 
   # 2 cores available on Appveyor workers: https://www.appveyor.com/docs/build-configuration/#build-environment
   # CPU_COUNT is passed through conda build: https://github.com/conda/conda-build/pull/1149
