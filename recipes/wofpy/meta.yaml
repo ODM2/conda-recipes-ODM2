@@ -49,7 +49,7 @@ test:
 about:
   home: https://github.com/ODM2/WOFpy
   license: BSD 3-Clause
-  summary: 'Serve WaterOneFlow web services.'
+  summary: 'Serve WaterOneFlow web services'
 
 extra:
   recipe-maintainers:
