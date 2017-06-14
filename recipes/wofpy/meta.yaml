@@ -35,7 +35,7 @@ requirements:
     - requests
     - sqlalchemy
     - suds-jurko
-    - uwsgi
+    - uwsgi  # [not win]
     - geoalchemy-odm2
 
 test:
