@@ -36,15 +36,15 @@ export CONDA_NPY='19'
 export PYTHONUNBUFFERED=1
 echo "$config" > ~/.condarc
 
+conda config --set always_yes yes --set changeps1 no --set show_channel_urls true --set auto_update_conda false
 conda update --yes conda
 conda install --yes conda-build-all
-conda install --yes conda=4.2.16
 
 # A lock sometimes occurs with incomplete builds.
 conda clean --lock
 
 conda info
 
-conda-build-all /conda-recipes/recipes $UPLOAD --inspect-channels $UPLOAD_OWNER --matrix-conditions "numpy >=1.11" "python >=2.7,<3|>=3.5,<=3.6"
+conda-build-all /conda-recipes/recipes $UPLOAD --inspect-channels $UPLOAD_OWNER --matrix-conditions "numpy >=1.12" "python >=2.7,<3|>=3.5,<=3.6"
 
 EOF
