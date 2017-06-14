@@ -1,4 +1,4 @@
-{% set version = "2.0.11b0" %}
+{% set version = "2.1.0b0" %}
 
 package:
   name: wofpy
@@ -6,13 +6,15 @@ package:
 
 source:
   fn: WOFpy-{{ version }}.tar.gz
-  url: https://github.com/ODM2/WOFpy/archive/{{ version }}.tar.gz
-  sha256: 984452fb7852c0aeb5a7ffeb9174d703f53ed2f71e210d933deb4132b3c6eadc
+  url: https://pypi.io/packages/source/W/WOFpy/WOFpy-{{ version }}.tar.gz
+  sha256: 6f81c94990ad0307e7cc6e187fb7afb5f0c338428b0a60d3742ed163eec51d0b
 
 build:
-  number: 1
+  number: 0
   skip: True  # [py3k]
   script: python setup.py install --single-version-externally-managed --record record.txt
+  entry_points:
+    - wofpy_config = wof.wofpy_config:main
 
 requirements:
   build:
@@ -20,33 +22,29 @@ requirements:
     - setuptools
   run:
     - python
-    - flask
-    - lxml
-    - spyne
-    - python-dateutil
+    - configparser  # [py2k]
+    - docopt
+    - flask >=0.10.0
     - jinja2
+    - lxml >=3.4.4
+    - python-dateutil
     - pytz
-    - mysql-python  # [py2k and not osx]
+    - spyne >=2.12.8
+    - odm2api
+    - pyodbc
+    - requests
+    - sqlalchemy
+    - suds-jurko
+    - uwsgi  # [not win]
+    - geoalchemy-odm2
 
 test:
   imports:
-    - examples
-    - examples.flask
-    - examples.flask.barebones
-    - examples.flask.barebones.tests
-    - examples.flask.cbi
-    - examples.flask.csv_server
-    - examples.flask.csv_tutorial
-    - examples.flask.csv_tutorial.solution
-    - examples.flask.csv_tutorial.tutorial
-    - examples.flask.odm2
-    - examples.flask.odm2.measurement
-    - examples.flask.odm2.timeseries
-    - examples.flask.odm_1_1
-    - examples.flask.swis
     - wof
     - wof.apps
     - wof.flask
+  commands:
+    - wofpy_config -h
 
 about:
   home: https://github.com/ODM2/WOFpy

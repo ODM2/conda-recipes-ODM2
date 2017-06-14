@@ -23,17 +23,15 @@ install:
   - bash miniconda.sh -b -p $HOME/miniconda
   - export PATH="$HOME/miniconda/bin:$PATH"
   - hash -r
-  - conda config --set always_yes yes --set changeps1 no
+  - conda config --set always_yes yes --set changeps1 no --set show_channel_urls true --set auto_update_conda false
   - conda config --set show_channel_urls true
-  - conda update --quiet conda
+  #- conda update --quiet conda
 
   # This numpy variable is not used, but conda-build complains if we haven't set it already.
   - export CONDA_NPY=19
   - conda config --add channels odm2
-  - conda install --yes conda-build-all
-  # https://github.com/SciTools/conda-build-all/issues/79
-  - conda install --yes conda==4.2.16
-
+  - conda install conda-build-all
+  - conda install conda=4.2.16  # Temporary workaround for a bug in conda-build-all.
   - conda info
 
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then
@@ -48,7 +46,7 @@ script:
       export UPLOAD="--upload-channels odm2";
     fi
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
-      conda-build-all ./recipes $UPLOAD --inspect-channels odm2 --matrix-conditions "numpy >=1.11" "python >=2.7,<3|>=3.5,<=3.6" ;
+      conda-build-all ./recipes $UPLOAD --inspect-channels odm2 --matrix-conditions "numpy >=1.12" "python >=2.7,<3|>=3.5,<=3.6" ;
     fi
 
   # Packages integration tests via user notebooks.
