@@ -1,4 +1,4 @@
-{% set version = "1.0.3" %}
+{% set version = "1.0.4" %}
 
 package:
   name: conda-build-all
@@ -6,8 +6,8 @@ package:
 
 source:
     fn: conda-build-all_v{{ version }}.tar.gz
-    url: https://github.com/SciTools/conda-build-all/archive/v{{version}}.tar.gz
-    sha256: ee831249c5218ab66bead5326b122e865bf00dd81a1cae8d3c522024cd2d35de
+    url: https://github.com/conda-forge/conda-build-all/archive/v{{version}}.tar.gz
+    sha256: https://github.com/conda-forge/conda-build-all/archive/v{{version}}.tar.gz
 
 build:
   number: 0
