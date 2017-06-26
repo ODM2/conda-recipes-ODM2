@@ -10,7 +10,7 @@ source:
   sha256: 7729ddd6766b9c5dab17b3709e2387935fd5c655872f1cbab7b7036474415217
 
 build:
-  number: 0
+  number: 1
   script: python setup.py install --single-version-externally-managed --record record.txt
 
 requirements:
@@ -19,6 +19,7 @@ requirements:
     - setuptools
   run:
     - python
+    - branca
     - jinja2
     - numpy
     - pandas
