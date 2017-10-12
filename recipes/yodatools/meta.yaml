@@ -1,0 +1,42 @@
+{% set version = "0.1.0" %}
+
+package:
+  name: yodatools
+  version: {{ version }}
+
+source:
+  git_url: https://github.com/ocefpaf/YODA-Tools.git
+  git_branch: fix_deps
+
+build:
+  number: 0
+  skip: True  # [py3k]
+  script: python setup.py install --single-version-externally-managed --record record.txt
+  entry_points:
+    - yodatools = yodatools.dataloader.controller.Main:main
+
+requirements:
+  build:
+    - python
+    - setuptools
+  run:
+    - python
+    - numpy
+    - odm2api
+    - openpyxl
+    - pandas
+    - pyyaml
+    - wxpython ==3.0.0.0
+
+test:
+  imports:
+    - yodatools
+
+about:
+  home: https://github.com/ODM2/YODA-Tools
+  license: BSD 3-Clause
+  summary: 'Tools to validate and manage YODA files'
+
+extra:
+  recipe-maintainers:
+    - ocefpaf
