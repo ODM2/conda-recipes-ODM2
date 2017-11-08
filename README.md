@@ -3,7 +3,7 @@
 ## [Observations Data Model 2](http://odm2.org)
 
 [![Travis-CI](https://travis-ci.org/ODM2/conda-recipes-ODM2.svg?branch=master)](https://travis-ci.org/ODM2/conda-recipes-ODM2)
-[![Build status](https://ci.appveyor.com/api/projects/status/mfo04kjn2s912qpl?svg=true)](https://ci.appveyor.com/project/odm2bot/conda-recipes-odm2)
+[![AppVeyor](https://ci.appveyor.com/api/projects/status/32e3mlw3v4spj2p2?svg=true)](https://ci.appveyor.com/project/odm2bot/conda-recipes-odm2)
 [![CircleCI](https://circleci.com/gh/ODM2/conda-recipes-ODM2.svg?style=shield)](https://circleci.com/gh/ODM2/conda-recipes-ODM2)
 
 The recipes here create `conda` packages that leverage and interact with `ODM2` data sources.

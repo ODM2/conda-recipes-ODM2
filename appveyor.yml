@@ -4,7 +4,7 @@ environment:
 
   BINSTAR_TOKEN:
     # Generated with "binstar auth --create --name <username> -o <channel>" and encrypted on ci.appveyor.com/tools/encrypt.
-    secure: MRDxJnJIsrkbzfGl8uPFGZF9heiLXjYref0Dc6Cou6KfzSwMbNfckvvQyi++M8JL
+    secure: 6tpjF4r14JxJYxBTiZhRt045irRviUwX+sePaZx40tewM9gv6FMOP12TxygEz67n
 
   matrix:
     - TARGET_ARCH: x64
