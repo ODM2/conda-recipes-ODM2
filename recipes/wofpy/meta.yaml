@@ -1,4 +1,4 @@
-{% set version = "2.2.0" %}
+{% set version = "2.3.0" %}
 
 package:
   name: wofpy
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/W/WOFpy/WOFpy-{{ version }}.tar.gz
-  sha256: 2005fc3ddfb93f95c1542bb301d1f6fafc400c36527828fc8177c33ded3dd913
+  sha256: cce4a71ede140e31f7320490cd37b23a16ea76c860c8c7c3ba2115ef41972343
 
 build:
   number: 0
