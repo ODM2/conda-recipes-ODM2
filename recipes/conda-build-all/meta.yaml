@@ -5,7 +5,7 @@ package:
   version: {{ version }}
 
 source:
-  url: https://github.com/conda-forge/conda-build-all/archive/v{{version}}.tar.gz
+  url: https://github.com/conda-tools/conda-build-all/archive/v{{version}}.tar.gz
   sha256: e296f5eebae17f6a5ee90af9c2838fb5241656509cd008375f4bfbd704f53da8
 
 build:
