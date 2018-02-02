@@ -38,8 +38,6 @@ test:
     - sqlalchemy.ext.declarative
     - sqlalchemy.orm
     - sqlalchemy.sql
-    - sqlalchemy.testing
-    - sqlalchemy.testing.plugin
     - sqlalchemy.util
 
 about:
