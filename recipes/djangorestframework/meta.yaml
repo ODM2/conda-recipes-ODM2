@@ -1,0 +1,40 @@
+{% set version = "3.7.7" %}
+
+package:
+  name: djangorestframework
+  version: {{ version }}
+
+source:
+  url: https://pypi.io/packages/source/d/djangorestframework/djangorestframework-{{ version }}.tar.gz
+  sha256: 9f9e94e8d22b100ed3a43cee8c47a7ff7b185e778a1f2da9ec5c73fc4e081b87
+
+build:
+  number: 0
+  skip: True  # [win or osx]
+  noarch: python
+  script: python -m pip install --no-deps --ignore-installed .
+
+requirements:
+  build:
+    - python
+    - pip
+  run:
+    - python
+
+test:
+  imports:
+    - rest_framework
+    - rest_framework.authtoken
+    - rest_framework.authtoken.migrations
+    - rest_framework.templatetags
+    - rest_framework.utils
+
+about:
+  home: http://www.django-rest-framework.org
+  license: BSD 2-Clause
+  summary: 'Web APIs for Django, made easy'
+
+extra:
+  recipe-maintainers:
+    - ocefpaf
+    - kwilcox
