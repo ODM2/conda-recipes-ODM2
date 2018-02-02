@@ -20,12 +20,12 @@ requirements:
     - setuptools
     - geos 3.5.*
     - cython
-    - numpy x.x
+    - numpy 1.11.*
     - msinttypes  # [win and py<35]
   run:
     - python
     - geos 3.5.*
-    - numpy x.x
+    - numpy >=1.11
 
 test:
   requires:
