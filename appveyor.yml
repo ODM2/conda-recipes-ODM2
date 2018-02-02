@@ -40,9 +40,10 @@ install:
   - cmd: conda config --set show_channel_urls true
   - cmd: conda config --add channels odm2
 
-  #- cmd: conda update conda
-  - cmd: conda install conda-build-all
-  - cmd: conda install conda=4.2.16  # Temporary workaround for a bug in conda-build-all.
+  # We cannot use modern conda/conda-build/conda-build-all
+  # unless we move to a distributed model or implement a
+  # conda_build_config.yaml.
+  - cmd: conda install conda-build-all conda-build=2 conda=4.2.16
 
   # Needed for building extensions in python2.7 x64 with cmake.
   - cmd: conda install --channel conda-forge vs2008_express_vc_python_patch

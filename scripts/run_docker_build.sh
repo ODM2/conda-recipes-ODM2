@@ -36,9 +36,10 @@ export PYTHONUNBUFFERED=1
 echo "$config" > ~/.condarc
 
 conda config --set always_yes yes --set changeps1 no --set show_channel_urls true --set auto_update_conda false
-# conda update conda
-conda install conda=4.2.16  # Temporary workaround for a bug in conda-build-all.
-conda install conda-build-all conda-build=2
+# We cannot use modern conda/conda-build/conda-build-all
+# unless we move to a distributed model or implement a
+# conda_build_config.yaml.
+conda install conda-build-all conda-build=2 conda=4.2.16
 
 # A lock sometimes occurs with incomplete builds.
 conda clean --lock
