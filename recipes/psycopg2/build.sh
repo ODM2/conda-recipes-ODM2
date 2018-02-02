@@ -2,7 +2,7 @@
 
 export LDFLAGS="${LDFLAGS} -L$PREFIX/lib -lssl"
 
-$PYTHON setup.py install
+$PYTHON -m pip install --no-deps --ignore-installed .
 
 if [[ `uname` == 'Darwin' ]]; then
      PG_LIB=$(pg_config --libdir)

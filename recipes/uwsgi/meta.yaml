@@ -5,30 +5,30 @@ package:
   version: {{ version }}
 
 source:
-  fn: uwsgi-{{ version }}.tar.gz
   url: https://pypi.io/packages/source/u/uWSGI/uwsgi-{{ version }}.tar.gz
   sha256: 572ef9696b97595b4f44f6198fe8c06e6f4e6351d930d22e5330b071391272ff
 
 build:
-  number: 0
+  number: 1
   skip: True  # [win]
   detect_binary_files_with_prefix: true
 
 requirements:
   build:
     - python
-    - libxml2  # [not win]
+    - pip
+    - libxml2
     - openssl 1.0.*
     - pcre
     - yaml
-    - zlib 1.2*
+    - zlib 1.2.11
   run:
     - python
-    - libxml2  # [not win]
+    - libxml2
     - openssl 1.0.*
     - pcre
     - yaml
-    - zlib 1.2*
+    - zlib 1.2.11
 
 test:
   source_files:

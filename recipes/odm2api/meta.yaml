@@ -9,14 +9,14 @@ source:
   sha256: d6f86c608ed6ab5809411e159ddfd512c9ed9d9e224cedd297cb56a6031407ff
 
 build:
-  number: 0
+  number: 1
   skip: True  # [py3k]
-  script: python setup.py install --single-version-externally-managed --record record.txt
+  script: python -m pip install --no-deps --ignore-installed .
 
 requirements:
   build:
     - python
-    - setuptools
+    - pip
   run:
     - python
     - pyodbc
