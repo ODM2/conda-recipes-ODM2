@@ -36,7 +36,7 @@ export PYTHONUNBUFFERED=1
 echo "$config" > ~/.condarc
 
 conda config --set always_yes yes --set changeps1 no --set show_channel_urls true --set auto_update_conda false
-conda update conda
+# conda update conda
 conda install conda=4.2.16  # Temporary workaround for a bug in conda-build-all.
 conda install conda-build-all conda-build=2
 
@@ -45,6 +45,6 @@ conda clean --lock
 
 conda info
 
-conda-build-all /conda-recipes/recipes $UPLOAD --inspect-channels $UPLOAD_OWNER --matrix-conditions "python >=2.7,<3|>=3.5,<=3.6"
+conda-build-all /conda-recipes/recipes $UPLOAD --inspect-channels $UPLOAD_OWNER --matrix-conditions "python >=2.7,<3|>3.5,<=3.6"
 
 EOF
