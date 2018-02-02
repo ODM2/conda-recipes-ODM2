@@ -24,6 +24,7 @@ requirements:
     - jinja2
     - numpy
     - pandas
+    - requests
 
 test:
   imports:
