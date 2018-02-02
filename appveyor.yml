@@ -13,11 +13,6 @@ environment:
       CONDA_INSTALL_LOCN: C:\\Miniconda-x64
 
     - TARGET_ARCH: x64
-      CONDA_PY: 35
-      PY_CONDITION: "python >=3.5,<3.6"
-      CONDA_INSTALL_LOCN: C:\\Miniconda35-x64
-
-    - TARGET_ARCH: x64
       CONDA_PY: 36
       PY_CONDITION: "python >=3.6,<3.7"
       CONDA_INSTALL_LOCN: C:\\Miniconda36-x64
@@ -65,4 +60,4 @@ build: off
 
 test_script:
     - cmd: if not "%BINSTAR_TOKEN%" == "" (set UPLOAD=--upload-channels odm2) else (set UPLOAD=)
-    - 'conda-build-all .\recipes %UPLOAD% --inspect-channels odm2/label/main --matrix-conditions "numpy >=1.12" "%PY_CONDITION%"'
+    - 'conda-build-all .\recipes %UPLOAD% --inspect-channels odm2/label/main --matrix-conditions "%PY_CONDITION%"'
