@@ -38,8 +38,7 @@ echo "$config" > ~/.condarc
 
 conda config --set always_yes yes --set changeps1 no --set show_channel_urls true --set auto_update_conda false
 conda update conda
-conda install conda-build-all
-conda install conda=4.2.16  # Temporary workaround for a bug in conda-build-all.
+conda install conda-build-all conda-build=2
 
 # A lock sometimes occurs with incomplete builds.
 conda clean --lock
