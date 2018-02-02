@@ -1,29 +1,30 @@
-{% set version = "2.6.2" %}
+{% set version = "2.7.3.2" %}
 
 package:
   name: psycopg2
   version: {{ version }}
 
 source:
-  fn: psycopg2-{{ version }}.tar.gz
   url: https://pypi.io/packages/source/p/psycopg2/psycopg2-{{ version }}.tar.gz
-  sha256: 70490e12ed9c5c818ecd85d185d363335cc8a8cbf7212e3c185431c79ff8c05c
+  sha256: 5c3213be557d0468f9df8fe2487eaf2990d9799202c5ff5cb8d394d09fad9b2a
   patches:
     - have_openssl.patch
 
 build:
-  number: 2
+  number: 0
+  script: python -m pip install --no-deps --ignore-installed .  # [win]
 
 requirements:
   build:
+    - python
+    - pip
     - openssl 1.0.*
     - postgresql
-    - python
   run:
+    - python
     # libpq is a repackaging of only the library to connect to postgres
     - libpq
     - openssl 1.0.*
-    - python
 
 test:
   imports:

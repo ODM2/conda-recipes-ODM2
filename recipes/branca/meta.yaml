@@ -5,18 +5,19 @@ package:
   version: {{ version }}
 
 source:
-  fn: branca-{{ version }}.tar.gz
   url: https://pypi.io/packages/source/b/branca/branca-{{ version }}.tar.gz
   sha256: 327b0bae73a519f25dc2f320d8d9f1885aad2e8e5105add1496269d5391b8ea4
 
 build:
-  number: 0
-  script: python setup.py install --single-version-externally-managed --record record.txt
+  number: 1
+  skip: True  # [win or osx]
+  noarch: python
+  script: python -m pip install --no-deps --ignore-installed .
 
 requirements:
   build:
     - python
-    - setuptools
+    - pip
   run:
     - python
     - jinja2

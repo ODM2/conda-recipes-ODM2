@@ -5,18 +5,17 @@ package:
   version: {{ version }}
 
 source:
-  fn: suds-jurko-{{ version }}.tar.bz2
   url: https://pypi.io/packages/source/s/suds-jurko/suds-jurko-{{ version }}.tar.bz2
   sha256: 29edb72fd21e3044093d86f33c66cf847c5aaab26d64cb90e69e528ef014e57f
 
 build:
-  number: 0
-  script: python setup.py install --single-version-externally-managed --record record.txt
+  number: 1
+  script: python -m pip install --no-deps --ignore-installed .
 
 requirements:
   build:
     - python
-    - setuptools
+    - pip
   run:
     - python
 

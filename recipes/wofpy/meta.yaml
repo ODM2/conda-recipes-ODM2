@@ -11,14 +11,14 @@ source:
 build:
   number: 0
   skip: True  # [py3k]
-  script: python setup.py install --single-version-externally-managed --record record.txt
+  script: python -m pip install --no-deps --ignore-installed .
   entry_points:
     - wofpy_config = wof.wofpy_config:main
 
 requirements:
   build:
     - python
-    - setuptools
+    - pip
   run:
     - python
     - configparser  # [py2k]
