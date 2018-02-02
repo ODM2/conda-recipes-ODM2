@@ -5,7 +5,6 @@ package:
   version: {{ version }}
 
 source:
-  fn: msinttypes-{{ version }}.zip
   url: https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/msinttypes/msinttypes-{{ version }}.zip
   sha256: 6e66d88de18aac0775890e94aa621853aa1d572136e3783ce130510d8fb6a55d
 

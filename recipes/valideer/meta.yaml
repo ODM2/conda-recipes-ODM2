@@ -5,18 +5,19 @@ package:
   version: {{ version }}
 
 source:
-  fn: valideer-{{ version }}.tar.gz
   url: https://github.com/podio/valideer/archive/{{ version }}.tar.gz
   sha256: be554a6f93eab049dd419a181c409a2e6421696263c7eb472cbdfaa46df9d1b1
 
 build:
-  number: 1
-  script: python setup.py install --single-version-externally-managed --record record.txt
+  number: 2
+  skip: True  # [win or osx]
+  noarch: python
+  script: python -m pip install --no-deps --ignore-installed .
 
 requirements:
   build:
     - python
-    - setuptools
+    - pip
   run:
     - python
     - decorator

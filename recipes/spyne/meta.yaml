@@ -5,15 +5,14 @@ package:
   version: {{ version }}
 
 source:
-  fn: spyne-{{ version }}.tar.gz
   url: https://pypi.io/packages/source/s/spyne/spyne-{{ version }}.tar.gz
   sha256: d37dfba126a6ce4e201ad63e31beb0a0e158b4580b1aa753c12310134a4cf0ae
   patches:
-    - print.patch  # [py3k]
+    - print.patch
 
 build:
-  number: 1
-  script: python setup.py install --single-version-externally-managed --record record.txt
+  number: 2
+  script: python -m pip install --no-deps --ignore-installed .
   entry_points:
     - sort_wsdl=spyne.test.sort_wsdl:main
 

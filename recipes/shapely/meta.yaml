@@ -5,7 +5,6 @@ package:
   version: {{ version }}
 
 source:
-  fn: Shapely-{{ version }}.tar.gz
   url: https://github.com/Toblerity/Shapely/archive/{{ version }}.tar.gz
   sha256: 85dd42a3e229f434642ad39744ebc82cd352931c6686d858bd9607649b5a4d8a
   patches:

@@ -5,19 +5,19 @@ package:
   version: {{ version }}
 
 source:
-  fn: geoalchemy-odm2-{{ version }}.tar.gz
   url: https://github.com/ODM2/geoalchemy/archive/v{{ version }}.tar.gz
   sha256: fbbfb448f601037c9bc15c5314047cd049a1c2dd5659d6078c6ef3ba1cc8508e
 
 build:
-  number: 0
-  preserve_egg_dir: True
-  script: python setup.py install --single-version-externally-managed --record record.txt
+  number: 1
+  skip: True  # [win or osx]
+  noarch: python
+  script: python -m pip install --no-deps --ignore-installed .
 
 requirements:
   build:
     - python
-    - setuptools
+    - pip
     - sqlalchemy >=0.6.1
     - six
   run:
