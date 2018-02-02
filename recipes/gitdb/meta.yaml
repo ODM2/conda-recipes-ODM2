@@ -11,7 +11,6 @@ source:
 build:
   number: 1
   skip: True  # [win or osx]
-  noarch: python
   script: python -m pip install --no-deps --ignore-installed .
 
 requirements:
