@@ -8,7 +8,7 @@ source:
   # not useing the jinja variable for the version b/c the release is not pep440
   # see https://www.python.org/dev/peps/pep-0440/#id25
   url: https://github.com/ODM2/ODM2RESTfulWebServices/archive/v0.1.0-alpha.tar.gz
-  sha256: f79d94dd58e7ed0e223049067bfc9e1d98234bca9ddf65bfd9eb62ff14d2a8bf
+  sha256: 98d70e107d08cc306148f6b759ea95606d2d20491ec1cffe9749d0985b6fd9ce
 
 build:
   number: 0
